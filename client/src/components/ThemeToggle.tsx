@@ -9,7 +9,7 @@ import {
 import { useTheme } from "./ThemeProvider";
 
 export function ThemeToggle() {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
     <DropdownMenu>
@@ -28,20 +28,23 @@ export function ThemeToggle() {
         <DropdownMenuItem 
           onClick={() => setTheme("light")}
           data-testid="theme-light"
+          className={theme === "light" ? "bg-accent" : ""}
         >
-          Light
+          Light {theme === "light" && "✓"}
         </DropdownMenuItem>
         <DropdownMenuItem 
           onClick={() => setTheme("dark")}
           data-testid="theme-dark"
+          className={theme === "dark" ? "bg-accent" : ""}
         >
-          Dark
+          Dark {theme === "dark" && "✓"}
         </DropdownMenuItem>
         <DropdownMenuItem 
           onClick={() => setTheme("system")}
           data-testid="theme-system"
+          className={theme === "system" ? "bg-accent" : ""}
         >
-          System
+          System {theme === "system" && "✓"}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

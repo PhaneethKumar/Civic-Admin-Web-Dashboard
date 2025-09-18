@@ -41,11 +41,20 @@ export function ThemeProvider({
         ? "dark"
         : "light";
 
-      root.classList.add(systemTheme);
+      console.log("System theme detected:", systemTheme);
+      if (systemTheme === "dark") {
+        root.classList.add("dark");
+      }
+      // For light mode, we don't add a class since :root handles light mode
       return;
     }
 
-    root.classList.add(theme);
+    console.log("Setting theme to:", theme);
+    if (theme === "dark") {
+      root.classList.add("dark");
+    }
+    // For light mode, we don't add a class since :root handles light mode
+    console.log("Root classes after theme change:", root.className);
   }, [theme]);
 
   const value = {
